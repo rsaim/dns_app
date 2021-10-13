@@ -5,7 +5,7 @@ import time
 import os
 
 import logging as log
-log.basicConfig(format='[%(asctime)s] %(message)s',
+log.basicConfig(format='[%(asctime)s %(filename)s:%(lineno)d] %(message)s',
                 datefmt='%I:%M:%S %p',
                 level=log.DEBUG)
 
@@ -69,7 +69,7 @@ def main():
         msg = pickle.loads(msg_bytes)
         log.info(f"Message from Client: {msg!r}")
         if len(msg) == 4:
-            type, name, value, ttl = pickle.loads(msg_bytes)
+            name, value, type, ttl = pickle.loads(msg_bytes)
             save_dns_record(name=name, type=type, value=value, ttl=ttl)
         elif len(msg) == 2:
             type, name = msg
