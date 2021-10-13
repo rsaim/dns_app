@@ -1,3 +1,5 @@
+Docker image: https://hub.docker.com/r/rsaim/auth-server
+
 ```bash
 $ docker build -t rsaim/auth-server:latest .
 [+] Building 0.4s (11/11) FINISHED
