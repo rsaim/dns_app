@@ -1,3 +1,4 @@
+```bash
 $ docker build -t rsaim/auth-server:latest .
 [+] Building 0.4s (11/11) FINISHED
  => [internal] load build definition from Dockerfile                                                                                                                                           0.0s
@@ -19,9 +20,11 @@ $ docker build -t rsaim/auth-server:latest .
  => => naming to docker.io/rsaim/auth-server:latest                                                                                                                                            0.0s
 
 Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+```
 
-###############
 
+
+```bash
 $ docker build -t rsaim/auth-server:latest .
 [+] Building 0.4s (11/11) FINISHED
  => [internal] load build definition from Dockerfile                                                                                                                                           0.0s
@@ -43,10 +46,9 @@ $ docker build -t rsaim/auth-server:latest .
  => => naming to docker.io/rsaim/auth-server:latest                                                                                                                                            0.0s
 
 Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+```
 
-
-###############
-
+```bash
 $ docker push rsaim/auth-server
 Using default tag: latest
 The push refers to repository [docker.io/rsaim/auth-server]
@@ -65,3 +67,7 @@ ba6e5ff31f23: Mounted from rsaim/fibonacci-server
 0b3c02b5d746: Mounted from rsaim/fibonacci-server
 62a747bf1719: Mounted from rsaim/fibonacci-server
 latest: digest: sha256:94567dd85fd8f0bc77c36f9906bc5887449d325ab5f38e406723162b484c54b9 size: 3259
+```
+
+
+
