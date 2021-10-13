@@ -1,3 +1,4 @@
+```bash
 $ docker build -t rsaim/fibonacci-server:latest .
 [+] Building 3.4s (13/13) FINISHED
  => [internal] load build definition from Dockerfile                                                                                                                                           0.0s
@@ -20,32 +21,37 @@ $ docker build -t rsaim/fibonacci-server:latest .
  => => exporting layers                                                                                                                                                                        0.1s
  => => writing image sha256:c611685a47ee53c47161627c9384eeabb65a48ab8faf666de2b23d1c6d38df21                                                                                                   0.0s
  => => naming to docker.io/rsaim/fibonacci-server:latest                                                                                                                                       0.0s
+ 
+ Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
+```
 
-Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
 
-###############
 
+```bash
 $ docker run -p 9090:9090 rsaim/fibonacci-server
+
  * Serving Flask app 'fibonacci_server' (lazy loading)
  * Environment: production
-   WARNING: This is a development server. Do not use it in a production deployment.
-   Use a production WSGI server instead.
+    WARNING: This is a development server. Do not use it in a production deployment.
+    Use a production WSGI server instead.
  * Debug mode: on
-[fibonacci server: 06:56:45 PM]  * Running on all addresses.
-   WARNING: This is a development server. Do not use it in a production deployment.
-[fibonacci server: 06:56:45 PM]  * Running on http://172.17.0.3:9090/ (Press CTRL+C to quit)
-[fibonacci server: 06:56:45 PM]  * Restarting with stat
-[fibonacci server: 06:56:45 PM]  * Debugger is active!
-[fibonacci server: 06:56:45 PM]  * Debugger PIN: 124-349-638
-[fibonacci server: 06:57:03 PM] 172.17.0.1 - - [13/Oct/2021 18:57:03] "GET / HTTP/1.1" 200 -
-[fibonacci server: 06:57:03 PM] 172.17.0.1 - - [13/Oct/2021 18:57:03] "GET /favicon.ico HTTP/1.1" 404 -
-[fibonacci server: 06:57:16 PM] /fibonacci got n=2
-[fibonacci server: 06:57:16 PM] 172.17.0.1 - - [13/Oct/2021 18:57:16] "GET /fibonacci?number=2 HTTP/1.1" 200 -
-load: 1.76  cmd: com.docker.cli 3897 running 0.03u 0.01s
-^C
+    [fibonacci server: 06:56:45 PM]  * Running on all addresses.
+    WARNING: This is a development server. Do not use it in a production deployment.
+    [fibonacci server: 06:56:45 PM]  * Running on http://172.17.0.3:9090/ (Press CTRL+C to quit)
+    [fibonacci server: 06:56:45 PM]  * Restarting with stat
+    [fibonacci server: 06:56:45 PM]  * Debugger is active!
+    [fibonacci server: 06:56:45 PM]  * Debugger PIN: 124-349-638
+    [fibonacci server: 06:57:03 PM] 172.17.0.1 - - [13/Oct/2021 18:57:03] "GET / HTTP/1.1" 200 -
+    [fibonacci server: 06:57:03 PM] 172.17.0.1 - - [13/Oct/2021 18:57:03] "GET /favicon.ico HTTP/1.1" 404 -
+    [fibonacci server: 06:57:16 PM] /fibonacci got n=2
+    [fibonacci server: 06:57:16 PM] 172.17.0.1 - - [13/Oct/2021 18:57:16] "GET /fibonacci?number=2 HTTP/1.1" 200 -
+    load: 1.76  cmd: com.docker.cli 3897 running 0.03u 0.01s
+    ^C
+```
 
-###############
 
+
+```bash
 $ docker push rsaim/fibonacci-server
 Using default tag: latest
 The push refers to repository [docker.io/rsaim/fibonacci-server]
@@ -65,3 +71,7 @@ ba6e5ff31f23: Mounted from rsaim/user-server
 0b3c02b5d746: Mounted from rsaim/user-server
 62a747bf1719: Mounted from rsaim/user-server
 latest: digest: sha256:bdbfd5669f632ff730c0fc1e6675711397774cf29f81579102ab209eae884e84 size: 3470
+```
+
+
+
