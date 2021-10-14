@@ -3,21 +3,19 @@ import pickle
 import json
 import time
 import os
-
 import logging as log
+
 log.basicConfig(format='[%(asctime)s %(filename)s:%(lineno)d] %(message)s',
                 datefmt='%I:%M:%S %p',
                 level=log.DEBUG)
 
-
-HOST_IP = "127.0.0.1"
+HOST_IP = "0.0.0.0"
 SERVER_PORT = 53533
-
 BUFFER_SIZE = 1024
-
-AUTH_SERVER_DB_FILE = "auth_db.json"
-
+# Map /tmp/ on localhost to /tmp/ in the docker container
+AUTH_SERVER_DB_FILE = "/tmp/auth_db.json"
 TYPE = "A"
+
 
 def save_dns_record(name, value, type, ttl):
     """
@@ -58,10 +56,12 @@ def get_dns_record(name):
         return None
     return (TYPE, name, value, ttl_ts, ttl)
 
+
 def main():
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     udp_socket.bind((HOST_IP, SERVER_PORT))
-    log.info(f"UDP server up and listening on {socket.gethostname()}:{SERVER_PORT}")
+    log.info(f"UDP server up and listening on "
+             f"{socket.gethostbyname(socket.gethostname())}:{SERVER_PORT}")
 
     while (True):
         msg_bytes, client_addr = udp_socket.recvfrom(BUFFER_SIZE)
@@ -85,8 +85,9 @@ def main():
             # udp_socket.bind(client_addr)
             udp_socket.sendto(response_bytes, client_addr)
         else:
-            log.info(f"Expected msg of len 4 or 2, got :{msg!r}")
-            udp_socket.sendto(response_bytes, client_addr)
+            msg = f"Expected msg of len 4 or 2, got :{msg!r}"
+            log.error(msg)
+            udp_socket.sendto(msg, client_addr)
 
 
 if __name__ == '__main__':

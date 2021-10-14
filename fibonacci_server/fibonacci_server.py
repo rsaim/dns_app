@@ -1,23 +1,18 @@
-import json
 import socket
 import pickle
-
-import requests
 from flask import Flask, request
-
 import logging as log
-log.basicConfig(format='[fibonacci server: %(asctime)s] %(message)s',
+
+log.basicConfig(format='[FS: %(asctime)s] %(message)s',
                 datefmt='%I:%M:%S %p',
                 level=log.INFO)
 
 app = Flask(__name__)
-
-
 BUFFER_SIZE = 1024
 
 @app.route('/')
 def blah():
-    return "This is fibonacci server"
+    return "This is Fibonacci Server (FS)"
 
 def fib(n):
     if n < 0:
@@ -29,18 +24,22 @@ def fib(n):
     else:
         return fib(n - 1) + fib(n - 2)
 
+
 @app.route('/fibonacci')
 def fibonacci():
     n = int(request.args.get('number'))
     log.info(f"/fibonacci got n={n}")
     return str(fib(n))
 
+
 def register_with_as(as_ip, as_port, hostname, value, type, ttl):
     msg = ((hostname, value, type, ttl))
     msg_bytes = pickle.dumps(msg)
     as_addr = (as_ip, as_port)
     udp_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    log.info(f"Sending {msg} to {as_addr} via UDP socket")
     udp_socket.sendto(msg_bytes, as_addr)
+
 
 @app.route('/register', methods=['PUT'])
 def register():
@@ -60,6 +59,17 @@ def register():
                      type="A",
                      ttl=ttl)
     return "Registration Done!"
+
+
+# @app.route("/get_ip")
+# def get_ip():
+#     import docker
+#     container_name = request.args.get("name")
+#     client = docker.DockerClient()
+#     container = client.containers.get(container_name)
+#     ip_add = container.attrs['NetworkSettings']['IPAddress']
+#     print(ip_add)
+#     return str(container, ip_add)
 
 # def main():
 #     # dns_record = ("Hello from UDP Client", 123, )
