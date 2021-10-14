@@ -44,7 +44,7 @@ def register_with_as(as_ip, as_port, hostname, value, type, ttl):
 @app.route('/register', methods=['PUT'])
 def register():
     body = request.json
-    print(f"/register got body={body!r}")
+    log.info(f"/register got body={body!r}")
     if not body:
         raise ValueError("body is None")
     hostname = body["hostname"]

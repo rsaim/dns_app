@@ -30,6 +30,7 @@ def get_fs_ip_from_as(hostname, as_ip, as_port):
     response = pickle.loads(response)
     type, hostname, fs_ip, ttl = response
     log.info(f"Resolved fs {hostname!r} to IP {fs_ip}")
+    return fs_ip
 
 
 @app.route('/fibonacci', methods=["GET"])
@@ -47,8 +48,8 @@ def fibonacci():
                               as_port=as_port)
     if not fs_ip:
         return "Couldn't retrieve fs_ip"
-    return int(requests.get(f"{fs_ip}:{fs_port}/fibonacci",
-                            params={"number": number}).content)
+    return requests.get(f"http://{fs_ip}:{fs_port}/fibonacci",
+                        params={"number": number}).content
 
 app.run(host='0.0.0.0',
         port=8080,

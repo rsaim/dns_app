@@ -30,25 +30,43 @@ $ docker build -t rsaim/fibonacci-server:latest .
 
 
 ```bash
-$ docker run -p 9090:9090 rsaim/fibonacci-server
-
+$ docker run -p 9090:9090 --net=DNS_APP_NETW rsaim/fibonacci-server
  * Serving Flask app 'fibonacci_server' (lazy loading)
  * Environment: production
-    WARNING: This is a development server. Do not use it in a production deployment.
-    Use a production WSGI server instead.
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
  * Debug mode: on
-    [fibonacci server: 06:56:45 PM]  * Running on all addresses.
-    WARNING: This is a development server. Do not use it in a production deployment.
-    [fibonacci server: 06:56:45 PM]  * Running on http://172.17.0.3:9090/ (Press CTRL+C to quit)
-    [fibonacci server: 06:56:45 PM]  * Restarting with stat
-    [fibonacci server: 06:56:45 PM]  * Debugger is active!
-    [fibonacci server: 06:56:45 PM]  * Debugger PIN: 124-349-638
-    [fibonacci server: 06:57:03 PM] 172.17.0.1 - - [13/Oct/2021 18:57:03] "GET / HTTP/1.1" 200 -
-    [fibonacci server: 06:57:03 PM] 172.17.0.1 - - [13/Oct/2021 18:57:03] "GET /favicon.ico HTTP/1.1" 404 -
-    [fibonacci server: 06:57:16 PM] /fibonacci got n=2
-    [fibonacci server: 06:57:16 PM] 172.17.0.1 - - [13/Oct/2021 18:57:16] "GET /fibonacci?number=2 HTTP/1.1" 200 -
-    load: 1.76  cmd: com.docker.cli 3897 running 0.03u 0.01s
-    ^C
+[FS: 04:07:42 AM]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+[FS: 04:07:42 AM]  * Running on http://172.19.0.3:9090/ (Press CTRL+C to quit)
+[FS: 04:07:42 AM]  * Restarting with stat
+[FS: 04:07:42 AM]  * Debugger is active!
+[FS: 04:07:42 AM]  * Debugger PIN: 396-951-784
+[FS: 04:07:47 AM] /register got body=None
+[FS: 04:08:03 AM] /register got body={'hostname': 'fibonacci.com', 'fs_ip': '127.0.0.1', 'fs_port': 9090, 'as_ip': '127.0.0.1', 'as_port': 53533, 'ttl': 15}
+[FS: 04:08:03 AM] Sending ('fibonacci.com', '127.0.0.1', 'A', 15) to ('127.0.0.1', 53533) via UDP socket
+[FS: 04:08:03 AM] 172.19.0.1 - - [14/Oct/2021 04:08:03] "PUT /register HTTP/1.1" 200 -
+[FS: 04:08:15 AM] /register got body={'hostname': 'fibonacci.com', 'fs_ip': '172.19.0.3', 'fs_port': 9090, 'as_ip': '172.19.0.2', 'as_port': 53533, 'ttl': 15}
+[FS: 04:08:15 AM] Sending ('fibonacci.com', '172.19.0.3', 'A', 15) to ('172.19.0.2', 53533) via UDP socket
+[FS: 04:08:15 AM] 172.19.0.1 - - [14/Oct/2021 04:08:15] "PUT /register HTTP/1.1" 200 -
+[FS: 04:17:27 AM] 172.19.0.1 - - [14/Oct/2021 04:17:27] "GET / HTTP/1.1" 200 -
+[FS: 04:18:35 AM] /register got body={'hostname': 'fibonacci.com', 'fs_ip': '172.19.0.3', 'fs_port': 9090, 'as_ip': '172.19.0.2', 'as_port': 53533, 'ttl': 15}
+[FS: 04:18:35 AM] Sending ('fibonacci.com', '172.19.0.3', 'A', 15) to ('172.19.0.2', 53533) via UDP socket
+[FS: 04:18:35 AM] 172.19.0.1 - - [14/Oct/2021 04:18:35] "PUT /register HTTP/1.1" 200 -
+[FS: 04:22:19 AM] /register got body={'hostname': 'fibonacci.com', 'fs_ip': '172.19.0.3', 'fs_port': 9090, 'as_ip': '172.19.0.2', 'as_port': 53533, 'ttl': 100000}
+[FS: 04:22:19 AM] Sending ('fibonacci.com', '172.19.0.3', 'A', 100000) to ('172.19.0.2', 53533) via UDP socket
+[FS: 04:22:19 AM] 172.19.0.1 - - [14/Oct/2021 04:22:19] "PUT /register HTTP/1.1" 200 -
+[FS: 04:26:36 AM] /fibonacci got n=9
+[FS: 04:26:36 AM] 172.19.0.5 - - [14/Oct/2021 04:26:36] "GET /fibonacci?number=9 HTTP/1.1" 200 -
+[FS: 04:26:40 AM] 172.19.0.5 - - [14/Oct/2021 04:26:40] "GET /fibonacci HTTP/1.1" 500 -
+[FS: 04:26:43 AM] 172.19.0.5 - - [14/Oct/2021 04:26:43] "GET / HTTP/1.1" 200 -
+[FS: 04:30:32 AM] /fibonacci got n=9
+[FS: 04:30:32 AM] 172.19.0.4 - - [14/Oct/2021 04:30:32] "GET /fibonacci?number=9 HTTP/1.1" 200 -
+[FS: 04:31:10 AM] /fibonacci got n=9
+[FS: 04:31:10 AM] 172.19.0.4 - - [14/Oct/2021 04:31:10] "GET /fibonacci?number=9 HTTP/1.1" 200 -
+[FS: 04:32:37 AM] 172.19.0.1 - - [14/Oct/2021 04:32:37] "GET /?number=9 HTTP/1.1" 200 -
+[FS: 04:32:45 AM] /fibonacci got n=9
+[FS: 04:32:45 AM] 172.19.0.1 - - [14/Oct/2021 04:32:45] "GET /fibonacci?number=9 HTTP/1.1" 200 -
 ```
 
 

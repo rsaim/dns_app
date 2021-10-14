@@ -51,24 +51,37 @@ Use 'docker scan' to run Snyk tests against images to find vulnerabilities and l
 ```
 
 ```bash
-$ docker push rsaim/auth-server
-Using default tag: latest
-The push refers to repository [docker.io/rsaim/auth-server]
-f1b71091f793: Pushed
-1ca8ebb2878d: Mounted from rsaim/fibonacci-server
-cd93ac2f9c3a: Mounted from rsaim/fibonacci-server
-5da471c81d43: Mounted from rsaim/fibonacci-server
-34b2899cd9e6: Mounted from rsaim/fibonacci-server
-febe96d6107f: Mounted from rsaim/fibonacci-server
-7b656b8058c4: Mounted from rsaim/fibonacci-server
-02a38a00d553: Mounted from rsaim/fibonacci-server
-7fcd2600f5ad: Mounted from rsaim/fibonacci-server
-8f56c3340629: Mounted from rsaim/fibonacci-server
-ba6e5ff31f23: Mounted from rsaim/fibonacci-server
-9f9f651e9303: Mounted from rsaim/fibonacci-server
-0b3c02b5d746: Mounted from rsaim/fibonacci-server
-62a747bf1719: Mounted from rsaim/fibonacci-server
-latest: digest: sha256:94567dd85fd8f0bc77c36f9906bc5887449d325ab5f38e406723162b484c54b9 size: 3259
+$ docker run -p 53533:53533/udp --network DNS_APP_NETW rsaim/auth-server
+[01:55:33 AM auth_server.py:94] Spinning up authoritative server
+[01:55:33 AM auth_server.py:63] UDP server up and listening on 172.19.0.2:53533
+^[[C[04:08:15 AM auth_server.py:70] Message from Client: ('fibonacci.com', '172.19.0.3', 'A', 15)
+[04:08:16 AM auth_server.py:40] Saving DNS record for fibonacci.com ('172.19.0.3', 1634184511.0510201, 15)
+[04:18:35 AM auth_server.py:70] Message from Client: ('fibonacci.com', '172.19.0.3', 'A', 15)
+[04:18:35 AM auth_server.py:40] Saving DNS record for fibonacci.com ('172.19.0.3', 1634185130.401172, 15)
+[04:21:51 AM auth_server.py:70] Message from Client: ('A', 'fibonacci.com')
+[04:21:51 AM auth_server.py:52] Got DNS records for fibonacci.com: ['172.19.0.3', 1634185130.401172, 15]
+[04:21:51 AM auth_server.py:53] Curr time=1634185311.897173 ttl_ts=1634185130.401172
+[04:21:51 AM auth_server.py:55] TTL expired for fibonacci.com
+[04:22:19 AM auth_server.py:70] Message from Client: ('fibonacci.com', '172.19.0.3', 'A', 100000)
+[04:22:19 AM auth_server.py:40] Saving DNS record for fibonacci.com ('172.19.0.3', 1634285339.5630207, 100000)
+[04:22:24 AM auth_server.py:70] Message from Client: ('A', 'fibonacci.com')
+[04:22:24 AM auth_server.py:52] Got DNS records for fibonacci.com: ['172.19.0.3', 1634285339.5630207, 100000]
+[04:22:24 AM auth_server.py:53] Curr time=1634185344.6342757 ttl_ts=1634285339.5630207
+[04:24:46 AM auth_server.py:70] Message from Client: ('A', 'fibonacci.com')
+[04:24:46 AM auth_server.py:52] Got DNS records for fibonacci.com: ['172.19.0.3', 1634285339.5630207, 100000]
+[04:24:46 AM auth_server.py:53] Curr time=1634185486.0046916 ttl_ts=1634285339.5630207
+[04:27:57 AM auth_server.py:70] Message from Client: ('A', 'fibonacci.com')
+[04:27:57 AM auth_server.py:52] Got DNS records for fibonacci.com: ['172.19.0.3', 1634285339.5630207, 100000]
+[04:27:57 AM auth_server.py:53] Curr time=1634185677.368206 ttl_ts=1634285339.5630207
+[04:29:05 AM auth_server.py:70] Message from Client: ('A', 'fibonacci.com')
+[04:29:05 AM auth_server.py:52] Got DNS records for fibonacci.com: ['172.19.0.3', 1634285339.5630207, 100000]
+[04:29:05 AM auth_server.py:53] Curr time=1634185745.2784417 ttl_ts=1634285339.5630207
+[04:30:31 AM auth_server.py:70] Message from Client: ('A', 'fibonacci.com')
+[04:30:31 AM auth_server.py:52] Got DNS records for fibonacci.com: ['172.19.0.3', 1634285339.5630207, 100000]
+[04:30:31 AM auth_server.py:53] Curr time=1634185831.9984496 ttl_ts=1634285339.5630207
+[04:31:10 AM auth_server.py:70] Message from Client: ('A', 'fibonacci.com')
+[04:31:10 AM auth_server.py:52] Got DNS records for fibonacci.com: ['172.19.0.3', 1634285339.5630207, 100000]
+[04:31:10 AM auth_server.py:53] Curr time=1634185870.4237156 ttl_ts=1634285339.5630207
 ```
 
 

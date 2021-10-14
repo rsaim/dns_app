@@ -26,22 +26,21 @@ $ docker build -t rsaim/user-server:latest .
 
 
 ```bash
-$ docker run -p 8080:8080 rsaim/user-server
-
+$ docker run -p 8080:8080 --net=DNS_APP_NETW rsaim/user-server
  * Serving Flask app 'user_server' (lazy loading)
  * Environment: production
-    WARNING: This is a development server. Do not use it in a production deployment.
-    Use a production WSGI server instead.
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
  * Debug mode: on
-    [07:02:34 PM]  * Running on all addresses.
-    WARNING: This is a development server. Do not use it in a production deployment.
-    [07:02:34 PM]  * Running on http://172.17.0.4:8080/ (Press CTRL+C to quit)
-    [07:02:34 PM]  * Restarting with stat
-    [07:02:34 PM]  * Debugger is active!
-    [07:02:34 PM]  * Debugger PIN: 100-525-529
-    [07:02:47 PM] 172.17.0.1 - - [13/Oct/2021 19:02:47] "GET / HTTP/1.1" 200 -
-    [07:02:47 PM] 172.17.0.1 - - [13/Oct/2021 19:02:47] "GET /favicon.ico HTTP/1.1" 404 -
-    ^C
+[US: 04:31:01 AM]  * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+[US: 04:31:01 AM]  * Running on http://172.19.0.4:8080/ (Press CTRL+C to quit)
+[US: 04:31:01 AM]  * Restarting with stat
+[US: 04:31:01 AM]  * Debugger is active!
+[US: 04:31:01 AM]  * Debugger PIN: 125-394-566
+[US: 04:31:10 AM] Getting FS 'fibonacci.com' IP from AS 172.19.0.2:53533
+[US: 04:31:10 AM] Resolved fs 'fibonacci.com' to IP 172.19.0.3
+[US: 04:31:10 AM] 172.19.0.1 - - [14/Oct/2021 04:31:10] "GET /fibonacci?hostname=fibonacci.com&fs_port=9090&number=9&as_ip=172.19.0.2&as_port=53533 HTTP/1.1" 200 -
 ```
 
 
